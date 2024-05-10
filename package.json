@@ -1,0 +1,18 @@
+{
+  "name": "cypress_01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open",
+    "test:headless": "cypress run",
+    "test:mobile": "cypress run --config viewportWidth=375 --config viewportHeight=667",
+    "test:mobile:headless": "cypress run --config viewportWidth=375 --config viewportHeight=667 --headless"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.9.0"
+  }
+}
