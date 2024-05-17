@@ -27,8 +27,31 @@
 Cypress.Commands.add("login", (email, password) => {
     cy.contains("Log in").click()
     if (email)
-        cy.get("#mail").type(email)
+      cy.get("#mail").type(email)
     if (password)
-        cy.get("#pass").type(password)
+      cy.get("#pass").type(password)
     cy.contains("Submit").click()
-  });
+  })
+  
+  Cypress.Commands.add("addBookToFavorites", (bookSelector, bookTitle) => {
+    cy.get(bookSelector).click()
+    cy.visit('/favorites')
+    cy.contains(bookTitle).should('be.visible')
+  })
+  
+  Cypress.Commands.add("createAndAddBookViaCheckbox", (title, description, authors) => {
+    cy.get('.p-0 > .btn').click()
+    cy.get('#title').type(title)
+    cy.get('#description').type(description)
+    cy.get('#authors').type(authors)
+    cy.get('#favorite').check().click()
+    cy.get('form > .ml-2').click()
+    cy.visit('/favorites')
+    cy.contains(title).should('be.visible')
+  })
+  
+  Cypress.Commands.add("selectBookFromFavorites", (bookSelector, bookTitle) => {
+    cy.get(bookSelector).click()
+    cy.contains(bookTitle).should('be.visible')
+  })
+  
